@@ -24,6 +24,11 @@ data = data[cols]
 #drop null rows
 data.dropna(how='any',inplace=True)
 
+#feature scaling
+scaler = MinMaxScaler()
+data['rating_count_tot'] = scaler.fit_transform(np.array(data['rating_count_tot']).reshape(-1,1))
+data['rating_count_ver'] = scaler.fit_transform(np.array(data['rating_count_ver']).reshape(-1,1))
+print(data[['rating_count_tot','rating_count_ver']])
 #one hot encoding
 one_hot = pd.get_dummies(data['prime_genre'])
 data = data.join(one_hot)
@@ -34,4 +39,4 @@ data = data.drop(['0'],axis=1)
 data = data.drop(['user_rating'],axis=1)
 data = data.drop(['prime_genre'],axis=1)
 X = data
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3,shuffle=True)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3,shuffle=False)
