@@ -3,6 +3,11 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import r2_score
 poly_features = PolynomialFeatures(degree=2)
 
+
+X = data[['rating_count_tot','rating_count_ver','user_rating_ver','lang.num']]
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3,shuffle=True)
+
+
 # transforms the existing features to higher degree features.
 X_train_poly = poly_features.fit_transform(X_train)
 
@@ -31,10 +36,9 @@ test_set_rmse = (np.sqrt(metrics.mean_squared_error(y_test, prediction)))
 test_set_r2 = r2_score(y_test, prediction)
 
 
+
 print('True value for the first app in the test set is : ' + str(true_app_value))
 print('Predicted value for the first app in the test set is : ' + str(predicted_app_value))
 print("RMSE : "+str(test_set_rmse))
-print("Coefficient of determination : "+str(test_set_r2))
-
-
+print("Coefficient of determination (Score) : "+str(test_set_r2))
 
