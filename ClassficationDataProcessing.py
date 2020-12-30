@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import normalize,MinMaxScaler
-from sklearn.preprocessing import OneHotEncoder
 
 data = pd.read_csv('AppleStore_training_classification.csv')
 
