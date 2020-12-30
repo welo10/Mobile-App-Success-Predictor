@@ -6,21 +6,11 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import normalize,MinMaxScaler
-from sklearn.impute import SimpleImputer 
-from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 
 data = pd.read_csv('AppleStore_training_classification.csv')
 
-"""
-#Get the correlation between the features
-corr = data.corr()
-top_feature = corr.index[abs(corr['rate'])>=0]
-plt.subplots(figsize=(12, 8))
-top_corr = data[top_feature].corr()
-sns.heatmap(top_corr, annot=True)
-plt.show()
-"""
+
 # extracting features
 x_cols=['rating_count_tot','rating_count_ver','prime_genre','sup_devices.num','lang.num','ipadSc_urls.num']
 Y = data['rate']
