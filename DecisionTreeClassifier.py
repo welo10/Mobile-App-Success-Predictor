@@ -13,3 +13,9 @@ y_pred = DTclf.predict(X_test)
 result = metrics.accuracy_score(y_test, y_pred)
 print("Accuracy:",result)
 
+#Save Model
+filename = 'DT_model.sav'
+pickle.dump(DTclf, open(filename, 'wb'))
+
+
+

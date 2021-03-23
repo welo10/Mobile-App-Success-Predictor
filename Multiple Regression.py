@@ -5,6 +5,7 @@ from sklearn import linear_model
 from sklearn import metrics
 from sklearn.linear_model import Ridge 
 from sklearn.linear_model import Lasso 
+import pickle
 
 #Multple Linear Regression
 cls = linear_model.LinearRegression()
@@ -33,6 +34,9 @@ print('Predicted value for the first app in the test set is : ' + str(predicted_
 print("RMSE : "+str(test_set_rmse))
 print("Coefficient of determination : "+str(test_set_r2))
 
+#Save Model 
+filename = 'MultipleRegression_model.sav'
+pickle.dump(cls, open(filename, 'wb'))
 
 # Improvement using Ridge L2 Regulazation 
 print("***********Ridge Regeression********")
@@ -68,3 +72,7 @@ ax.spines['bottom'].set_position('zero')
   
 plt.style.use('ggplot') 
 plt.show() 
+
+#Save Model 
+filename = 'RidgeRegression_model.sav'
+pickle.dump(ridgeR, open(filename, 'wb'))

@@ -1,11 +1,12 @@
 from dataProcessing import *
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import r2_score
+import pickle
 poly_features = PolynomialFeatures(degree=2)
 
 
-X = data[['rating_count_tot','rating_count_ver','user_rating_ver','lang.num']]
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3,shuffle=True)
+Reg_X = data[['rating_count_tot','rating_count_ver','user_rating_ver','lang.num']]
+X_train, X_test, y_train, y_test = train_test_split(Reg_X, Reg_Y, test_size = 0.3,shuffle=True)
 
 
 # transforms the existing features to higher degree features.
@@ -42,3 +43,6 @@ print('Predicted value for the first app in the test set is : ' + str(predicted_
 print("RMSE : "+str(test_set_rmse))
 print("Coefficient of determination (Score) : "+str(test_set_r2))
 
+#Save Model 
+filename = 'Poly_model.sav'
+pickle.dump(poly_model, open(filename, 'wb'))

@@ -2,6 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from ClassficationDataProcessing import *
 from sklearn.metrics import  accuracy_score
 import time
+import pickle
 
 
 start_trainingtime=time.time()
@@ -29,3 +30,9 @@ LR_Accuracy=accuracy_score(y_test,LR_Predict)
 print("Accuracy is : ",LR_Accuracy)
 print("training time is: ",trainingtime)
 print("total test time: ",total_TestTime)
+
+#Save Model 
+filename = 'LogisticRegression_model.sav'
+pickle.dump(LR_Model, open(filename, 'wb'))
+
+
