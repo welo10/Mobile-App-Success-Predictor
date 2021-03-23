@@ -22,12 +22,12 @@ Classify_X = data[x_cols]
 #drop null rows
 data.dropna(how='any',inplace=True)
 
-"""
+
 #Label Encoding Y Values
 lb=LabelEncoder()
 data['rate']=lb.fit_transform(data['rate'])
 Classify_Y=data['rate']
-"""
+
 """
 #Onehot encoding Y values
 dummy=pd.get_dummies(Y,prefix="Rate",drop_first=False)

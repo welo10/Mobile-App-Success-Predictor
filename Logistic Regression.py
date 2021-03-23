@@ -3,7 +3,7 @@ from ClassficationDataProcessing import *
 from sklearn.metrics import  accuracy_score
 import time
 import pickle
-
+import matplotlib.pyplot as plt
 
 start_trainingtime=time.time()
 #Train Model
@@ -30,6 +30,17 @@ LR_Accuracy=accuracy_score(y_test,LR_Predict)
 print("Accuracy is : ",LR_Accuracy)
 print("training time is: ",trainingtime)
 print("total test time: ",total_TestTime)
+
+#Plotting 
+fig = plt.figure()
+ax = fig.add_subplot(111)
+Paramaters = ['Classification Accuracy', 'Total Training Time', 'Total Test Time']
+Values = [LR_Accuracy,trainingtime,total_TestTime]
+ax.bar(Paramaters,Values)
+ax.set_ylabel('Values')
+ax.set_ylim(0,4)
+ax.set_title('Logisitc Regeression')
+plt.show()
 
 #Save Model 
 filename = 'LogisticRegression_model.sav'
