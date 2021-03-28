@@ -6,11 +6,17 @@ from sklearn import metrics
 import pickle
 import time
 from ClassficationDataProcessing import *
+from sklearn.model_selection import GridSearchCV
+parameters = {'max_depth':range(3,20)}
 
+clf = GridSearchCV(DecisionTreeClassifier(criterion="entropy"), parameters, n_jobs=4)
+
+
+clf.fit(X_train,y_train)
 start_trainingtime=time.time()
-
-DTclf = DecisionTreeClassifier(criterion="entropy", max_depth=3)
-DTclf = DTclf.fit(X_train,y_train)
+print (clf.best_score_, clf.best_params_)
+DTclf = clf.best_estimator_
+DTclf.fit(X_train,y_train)
 end_trainigTime=time.time()
 trainingtime=end_trainigTime-start_trainingtime
 
